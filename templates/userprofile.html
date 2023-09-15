@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/common.css" />
+    <link rel="stylesheet" href="../static/dashboards.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <section class="top_flex">
+      <div class="sub_flex" id="dashboard_flex">
+        <h1 id="user_welcome">{{ user_id }}</h1>
+      </div>
+      <div class="sub_flex" id="dashboard_flex_1">
+        <a href="/userdashboard" class="common_link">Home</a>
+        <a href="/{{ user_id }}/cart" class="common_link">Cart</a>
+        <a href="/logout" class="common_link">Logout</a>
+      </div>
+    </section>
+    <section>
+      {% if purchases|length == 0 %}
+      <h4>No purchases to show.</h4>
+      {% else %}
+      <ul class="category_list">
+        {% for purchase in purchases %}
+        <li class="product_item">
+          <div>
+            Purchase price: {{ purchase.price }} Purchase date: {{ purchase.date
+            }}
+          </div>
+        </li>
+        <br />
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
+  </body>
+</html>

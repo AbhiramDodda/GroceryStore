@@ -1,0 +1,69 @@
+.common_list {
+  list-style: none;
+  padding: 2rem;
+  border: 3rem;
+}
+/* Buttons */
+.common_button {
+  position: relative;
+  top: 50%;
+  border: 10px;
+  border-right: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  padding: 15px;
+  min-height: 25px;
+  min-width: 120px;
+}
+.common_button:hover {
+  background-color: #002ead;
+  transition: 0.7s;
+}
+.common_button:focus {
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 4px #5a01a7;
+  transition: 0.7s;
+}
+
+/* Links */
+.common_link {
+  flex: 1;
+  text-decoration: none;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 3;
+  color: black;
+  padding: 1.5rem;
+}
+.common_link:link,
+common_link:visited,
+common_link:focus {
+  background: palegoldenrod;
+  color: black;
+}
+.common_link:hover {
+  background: orange;
+}
+.common_link:active {
+  background: darkred;
+  color: white;
+}
+
+/* Containers flexbox */
+.top_flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.sub_flex {
+  padding: 20px;
+  border: 20px;
+  background: lightcyan;
+  border-radius: 40%;
+}
+.sub_flex:hover {
+  background: cyan;
+}

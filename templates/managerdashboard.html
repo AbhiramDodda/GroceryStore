@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/common.css" />
+    <link rel="stylesheet" href="../static/dashboards.css" />
+    <title>Manager</title>
+  </head>
+  <body>
+    <section class="top_flex">
+      <div class="sub_flex" id="dashboard_flex">
+        <h1 id="user_welcome">Welcome</h1>
+      </div>
+      <div class="sub_flex" id="dashboard_flex_1">
+        <a href="/manager_dashboard/summary" class="common_link">Summary</a>
+        <a href="/logout" class="common_link">Logout</a>
+      </div>
+    </section>
+    <section id="categories">
+      {% if length == 0 %}
+      <h4>You have no categories as of now. Add some</h4>
+      <button
+        class="common_button"
+        onclick="window.location.href='/category/add'"
+      >
+        Add Category
+      </button>
+      {% else %}
+      <ul class="category_list">
+        {% for cat in categories %}
+        <li class="category_list_item">
+          <div class="new_category">
+            <div class="category_title_div">
+              <h3 class="category_title">{{ cat.name }}</h3>
+            </div>
+            <div class="products_space">
+              {% if categories[cat]|length == 0 %}
+              <div>
+                <p>No products in this category.</p>
+              </div>
+              <div>
+                <button
+                  class="common_button"
+                  onclick="window.location.href='/{{ cat.category_id }}/addproduct'"
+                >
+                  Add product
+                </button>
+              </div>
+              {% else %} {% for product in categories[cat] %}
+              <ul class="product_list">
+                <li class="product_item">
+                  <div class="product_div">
+                    <div class="product_title_div">
+                      <h4 class="product_title">{{ product.name }}</h4>
+                    </div>
+                    <div class="product_details">
+                      <h4>{{ product.price }}</h4>
+                    </div>
+                    <div>
+                      <button
+                        class="common_button"
+                        onclick="window.location.href='/{{ product.product_id }}/{{ product.category_id }}/editproduct'"
+                      >
+                        Edit product
+                      </button>
+                      <button
+                        class="common_button"
+                        onclick="window.location.href='/{{ product.product_id }}/{{ product.category_id }}/deleteproduct'"
+                      >
+                        Delete product
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+
+              <div>
+                <button
+                  class="common_button"
+                  onclick="window.location.href='/{{ cat.category_id }}/addproduct'"
+                >
+                  Add product
+                </button>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <button
+            class="common_button"
+            onclick="window.location.href='/{{ cat.category_id }}/{{ cat.name }}/editcategory'"
+          >
+            Edit
+          </button>
+          <button
+            class="common_button"
+            onclick="window.location.href='/{{ cat.category_id }}/deletecategory'"
+          >
+            Delete
+          </button>
+        </li>
+        <br />
+        {% endfor %}
+      </ul>
+
+      <div>
+        <button
+          onclick="window.location.href='/category/add'"
+          class="common_button"
+        >
+          Add Category
+        </button>
+      </div>
+      {% endif %}
+    </section>
+  </body>
+</html>

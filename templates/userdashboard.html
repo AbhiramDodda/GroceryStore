@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/common.css" />
+    <link rel="stylesheet" href="../static/dashboards.css" />
+    <title>SmallBasket</title>
+  </head>
+  <body>
+    <section class="top_flex">
+      <div class="sub_flex" id="dashboard_flex">
+        <h1 id="user_welcome">Welcome {{ user_id }}</h1>
+      </div>
+      <div class="sub_flex" id="dashboard_flex_1">
+        <a href="{{ user_id }}/profile" class="common_link">Profile</a>
+        <a href="/{{ user_id }}/cart" class="common_link">Cart</a>
+        <a href="/logout" class="common_link">Logout</a>
+      </div>
+    </section>
+    <section>
+      <div>
+        <form action="/search" method="POST">
+          <input type="hidden" value="{{ user_id }}" name="user_id" />
+          <input
+            placeholder="Search for Products and Categories"
+            type="text"
+            name="searchvalue"
+            id="search_box"
+          />
+          <input type="submit" value="Search" class="common_button" />
+        </form>
+      </div>
+    </section>
+    <section>
+      <div>
+        <h4>{{ error_message }}</h4>
+      </div>
+    </section>
+    <section id="categories">
+      {% if length == 0 %}
+      <h4>Amazing products coming soon</h4>
+      {% else %}
+      <ul class="category_list">
+        {% for cat in categories %}
+        <li class="category_list_item">
+          <div class="new_category">
+            <div class="category_title_div">
+              <h3 class="category_title">{{ cat.name }}</h3>
+            </div>
+            <div class="products_space">
+              {% if categories[cat]|length == 0 %}
+              <div>
+                <p>No products available pleasse visit again.</p>
+              </div>
+              {% else %} {% for product in categories[cat] %}
+              <ul class="product_list">
+                <li class="product_item">
+                  <div class="product_div">
+                    <div class="product_title_div">
+                      <h4 class="product_title">{{ product.name }}</h4>
+                    </div>
+                    <div class="product_details">
+                      <h4>{{ product.price }}{{ product.unit }}</h4>
+                    </div>
+                    {% if product.stock > 0 %}
+                    <div class="buttons_div">
+                      <button
+                        class="common_button"
+                        onclick="window.location.href='/{{ product.product_id }}/{{ user_id }}/addtocart'"
+                      >
+                        Add to cart
+                      </button>
+                      <button
+                        class="common_button"
+                        onclick="window.location.href='/{{ product.product_id }}/{{ user_id }}/buyproduct'"
+                      >
+                        Buy now
+                      </button>
+                    </div>
+                    {% else %}
+                    <div id="stock_div">
+                      <h5 id="outofstock_disp">Out of stock</h5>
+                    </div>
+                    {% endif %}
+                  </div>
+                </li>
+                <br />
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
+  </body>
+</html>

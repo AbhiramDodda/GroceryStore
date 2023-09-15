@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Item</title>
+  </head>
+  <body>
+    <div>
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{ product.price }} {{ product.unit }}</td>
+        </tr>
+        <tr>
+          <td>Availability</td>
+          {% if product.stock == 0 %}
+          <td>Out of stock</td>
+          {% else %}
+          <td>In Stock</td>
+          {% endif %}
+        </tr>
+      </table>
+    </div>
+    <form method="POST" action="/purchaseapi/delete">
+      <input type="hidden" value="{{ user_id }}" name="user_id" />
+      <input type="hidden" value="{{ cart_id }}" name="cart_id" />
+      <label>Are you sure of deleting the item from cart?</label>
+      <select name="confirm">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+      <input type="submit" value="Delete" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,341 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Add Category API"
+paths:
+  /categoryapi/add:
+    post:
+      summary: "Create a new category"
+      parameters:
+        - name: "category_name"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "The name of the new category"
+      responses:
+        200:
+          description: "Category created successfully"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Category created successfully"
+              link:
+                type: "string"
+                example: "/manager_dashboard"
+              where:
+                type: "string"
+                example: "Go back"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Enter valid name or Category exists"
+              link:
+                type: "string"
+                example: "/manager_dashboard"
+              where:
+                type: "string"
+                example: "Go back"
+
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Edit Category API"
+paths:
+  /categoryapi/edit:
+    post:
+      summary: "Edit an existing category"
+      parameters:
+        - name: "category_name"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "The updated name of the category"
+        - name: "category_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the category to be updated"
+      responses:
+        200:
+          description: "Category updated successfully"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Enter valid name or Category exists"
+              link:
+                type: "string"
+                example: "/manager_dashboard"
+              where:
+                type: "string"
+                example: "Go back"
+
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Delete Category API"
+paths:
+  /categoryapi/delete:
+    post:
+      summary: "Delete a category"
+      parameters:
+        - name: "delete_choice"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "User choice to delete or not (Possible values: 'YES' or 'NO')"
+        - name: "category_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the category to be deleted"
+      responses:
+        200:
+          description: "Category deleted successfully"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Category deleted successfully"
+        400:
+          description: "Bad Request"
+
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Add Product API"
+paths:
+  /productapi/add:
+    post:
+      summary: "Add a new product"
+      parameters:
+        - name: "category_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the product's category"
+        - name: "product_name"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "The name of the new product"
+        - name: "product_price"
+          in: "formData"
+          type: "number"
+          required: true
+          description: "The price of the new product"
+        - name: "product_unit"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "The unit of the new product"
+        - name: "product_stock"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The stock quantity of the new product"
+        - name: "fractal_allowed"
+          in: "formData"
+          type: "boolean"
+          required: true
+          description: "Whether fractal is allowed for the new product"
+      responses:
+        200:
+          description: "Product added successfully"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Product already exists or Illegal entry by manager"
+              link:
+                type: "string"
+                example: "/manager_dashboard"
+              where:
+                type: "string"
+                example: "Go back"
+
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Edit Product API"
+paths:
+  /productapi/edit:
+    post:
+      summary: "Create or update product information"
+      parameters:
+        - name: "changed_name"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "The updated product name"
+        - name: "category_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the product's category"
+        - name: "product_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the product"
+        - name: "changed_unit"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "The updated unit of the product"
+        - name: "changed_stock"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The updated stock quantity of the product"
+        - name: "changed_price"
+          in: "formData"
+          type: "number"
+          required: true
+          description: "The updated price of the product"
+        - name: "fractal_allowed"
+          in: "formData"
+          type: "boolean"
+          required: true
+          description: "Whether fractal is allowed for the product"
+      responses:
+        200:
+          description: "Product information updated successfully"
+        400:
+          description: "Bad Request"
+
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Delete Product API"
+paths:
+  /productapi/delete:
+    post:
+      summary: "Delete a product"
+      parameters:
+        - name: "delete_choice"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "User choice to delete or not (Possible values: 'YES' or 'NO')"
+        - name: "category_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the product's category"
+        - name: "product_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the product to be deleted"
+      responses:
+        200:
+          description: "Product deleted successfully"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Product deleted successfully"
+        400:
+          description: "Bad Request"
+
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Edit Purchase API"
+paths:
+  /purchaseapi/edit:
+    post:
+      summary: "Edit a purchase"
+      parameters:
+        - name: "cart_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the purchase cart"
+        - name: "quantity"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The updated quantity of the purchase"
+      responses:
+        200:
+          description: "Purchase updated successfully"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Enter valid quantity"
+              link:
+                type: "string"
+                example: "/userdashboard"
+              where:
+                type: "string"
+                example: "Go back"
+  
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Delete Purchase API"
+paths:
+  /purchaseapi/delete:
+    post:
+      summary: "Delete a purchase"
+      parameters:
+        - name: "cart_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the purchase cart"
+        - name: "confirm"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "User confirmation to delete (Possible values: 'Yes' or 'No')"
+      responses:
+        200:
+          description: "Purchase deleted successfully"
+        400:
+          description: "Bad Request"
+
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Search API"
+paths:
+  /searchapi/search:
+    post:
+      summary: "Perform a search"
+      parameters:
+        - name: "searchvalue"
+          in: "formData"
+          type: "string"
+          required: true
+          description: "The value to search for"
+        - name: "user_id"
+          in: "formData"
+          type: "integer"
+          required: true
+          description: "The ID of the user making the search"
+      responses:
+        200:
+          description: "Search results retrieved successfully"
+        400:
+          description: "Bad Request"

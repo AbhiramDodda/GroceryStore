@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/common.css" />
+    <link rel="stylesheet" href="../static/common.css" />
+    <link rel="stylesheet" href="../static/dashboards.css" />
+    <title>Cart</title>
+    <style>
+      #total {
+        font-size: 25px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      .product_details_div {
+        border-bottom: 5px;
+      }
+      .product_list_item {
+        background-color: blanchedalmond;
+        border: 5px;
+        padding: 5px;
+      }
+      .product_details_text {
+        font-size: 18px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        padding: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="top_flex">
+      <div class="sub_flex" id="dashboard_flex">
+        <h1 id="user_welcome">{{ user_id }}</h1>
+      </div>
+      <div class="sub_flex" id="dashboard_flex_1">
+        <a href="/userdashboard" class="common_link">Home</a>
+        <a href="/{{ user_id }}/cart" class="common_link">Cart</a>
+        <a href="/logout" class="common_link">Logout</a>
+      </div>
+    </section>
+    {% if products|length == 0 %}
+    <h4>No products in cart. Add some</h4>
+    {% else %}
+    <ul class="common_list category_list">
+      {% for product in products %}
+      <li class="product_list_item">
+        <div class="product_details_div">
+          <p class="product_details_text">Name: {{ product[1].name }}</p>
+        </div>
+        <div class="product_details_div">
+          <p class="product_details_text">
+            Price: {{ product[1].price }} {{ product[1].unit }}
+          </p>
+        </div>
+        <div class="product_details_div">
+          <p class="product_details_text">
+            Quantity: {{ product[0].quantity }}
+          </p>
+        </div>
+        <div class="product_details_div">
+          <p class="product_details_text">Subtotal: {{ product[0].price}}</p>
+        </div>
+        <div>
+          <button
+            class="common_button"
+            onclick="window.location.href='/{{ user_id }}/{{ product[1].product_id }}/review'"
+          >
+            Edit
+          </button>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    <div>
+      <h4 id="total">Total: {{ total }}</h4>
+    </div>
+    <div>
+      <button
+        class="common_button"
+        onclick="window.location.href='/{{ user_id }}/purchase'"
+      >
+        Buy
+      </button>
+    </div>
+    {% endif %}
+  </body>
+</html>

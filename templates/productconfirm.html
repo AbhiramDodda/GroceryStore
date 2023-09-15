@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm</title>
+  </head>
+  <body>
+    <div>
+      <h4>Product details</h4>
+      <ul>
+        <li>{{ product.name }}</li>
+        <li>{{ product.price }}</li>
+        <li>{{ product.unit }}</li>
+        <li>{{ product.stock }}</li>
+        <li>{{ product.fractal_allowed }}</li>
+      </ul>
+    </div>
+    <div>
+      <form action="/productapi/delete" method="POST">
+        <input type="hidden" value="{{ category_id }}" name="category_id" />
+        <input type="hidden" value="{{ product_id }}" name="product_id" />
+        <label>Are you sure you want to delete the above items.</label>
+        <select name="delete_choice" required>
+          <option value="NO">NO</option>
+          <option value="YES">YES</option>
+        </select>
+        <input type="submit" value="delete" />
+      </form>
+    </div>
+  </body>
+</html>

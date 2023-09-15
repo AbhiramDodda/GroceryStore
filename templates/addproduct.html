@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Product</title>
+  </head>
+  <body>
+    <h2>Add new product</h2>
+    <form method="POST" action="/productapi/add">
+      <input name="category_id" type="hidden" value="{{ category_id }}" />
+      <label class="form_label">Product name</label>
+      <input class="form_input" type="text" name="product_name" required />
+      <label class="form_label">Price per unit</label>
+      <input class="form_input" type="text" name="product_price" required />
+      <label class="form_label">Unit</label>
+      <select name="product_unit">
+        <option value="Rs/kg">Rs/kg</option>
+        <option value="Rs/litre">Rs/litre</option>
+        <option value="Rs/dozen">Rs/dozen</option>
+        <option value="Rs/box">Rs/box</option>
+      </select>
+      <label class="form_label">Stock available</label>
+      <input class="form_input" type="text" name="product_stock" required />
+      <label
+        >Is it possible to sell fractions of product.(Yes for products like rice
+        flour and No for products like oil packets, soaps).</label
+      >
+      <select name="fractal_allowed">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+      <input class="submit_btn" type="submit" placeholder="Create" />
+    </form>
+  </body>
+</html>

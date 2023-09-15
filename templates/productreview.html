@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+  </head>
+  <body>
+    <h2>Edit your purchase.</h2>
+    <h3>Product details</h3>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>{{ product.name }}</td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>{{ product.price }} {{ product.unit }}</td>
+      </tr>
+      <tr>
+        <td>Availability</td>
+        {% if product.stock == 0 %}
+        <td>Out of stock</td>
+        {% else %}
+        <td>In Stock</td>
+        {% endif %}
+      </tr>
+    </table>
+    <form method="POST" action="/buyproduct">
+      <input type="hidden" value="{{ user_id }}" name="user_id" />
+      <input type="hidden" value="{{ product.product_id }}" name="product_id" />
+      <input type="hidden" value="{{ cart.cart_id }}" name="cart_id" />
+      <label>Quantity</label>
+      <input type="text" name="quantity" value="{{ cart.quantity }}" required />
+      <input type="submit" value="Edit" />
+    </form>
+    <div>
+      <button
+        onclick="window.location.href='/{{ cart.cart_id }}/{{ product.product_id }}/purchasedelete'"
+      >
+        Delete
+      </button>
+    </div>
+  </body>
+</html>
