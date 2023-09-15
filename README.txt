@@ -1,4 +1,7 @@
-To run the application, 
+# Grocery Store
+
+
+##To run the application, 
 enter the following commands in the shell from the root folder of the application 
 
 For Linux,
