@@ -45,8 +45,6 @@ The project starts with **start.sh** that is located in code folder(**GrocerySto
 
 In the application only one manager exists. The manager can create categories which is empty by default, manager can add products under each category along with necessary information like stock, price etc. Manager is allowed to delete products and categories. If a non-empty category is deleted, all the products that belong to the category are also deleted. Users can see all the categories and products added by the managers in their respective dashboards. They can buy one quantity of any product by clicking **Add to cart** or add the quantity they like by selecting **Buy now**. All the products they buy among any category are displayed in cart as they are saved in cart table. In cart, they can edit and delete any purchase. 
 
-# Documentation
-insert link
 
 # How to use
 1. Clone this repo. <br>
