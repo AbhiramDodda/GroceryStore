@@ -8,9 +8,8 @@
 - [DB Schema Design](#db-schema-design) <br>
 - [API Design](#api-design) <br>
 - [Architecture and Features](#architecture-and-features) <br>
-- [Documentation](#documentation) <br>
 - [How to use](#how-to-use) <br>
-- [Contribution](#contribution)
+
 
 # Introduction
 The objective of the project is to build a grocery store app with one app and multiple users using Flask framework and concepts of Modern Application Development – 1. Project deals with sqlite database to store grocery store data and user data. The name of the project **SmallBasket** inspired from BigBasket.
