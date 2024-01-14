@@ -48,7 +48,7 @@ In the application only one manager exists. The manager can create categories wh
 # How to use
 1. Clone this repo. <br>
 - ```terminal
-   git clone https://github.com/AAC-OSP/GroceryStore
+   git clone https://github.com/AbhiramDodda/GroceryStore
    ```
 1. Install the required libraries from [Requirements](#requirements) <br>
 1. Execute the python script <br>
