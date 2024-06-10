@@ -28,8 +28,8 @@ The app has SQLite named **database.sqlite3** database with 7 tables in the data
 
 |Table Name|Column Details|
 |----------|--------------|
-|managers|manager_id(integer, primary key), username(string), password(string)|
-|users|user_id(integer, primary key), username(string), password(string), email(string)|
+|managers|manager_id(string, primary key), username(string), password(string)|
+|users|user_id(string, primary key), username(string), password(string), email(string)|
 |categories|category_id(string, primary key), name(string), search(string)|
 |products|product_id(string, primary key), category_id(string), name(string), search(string), price(numeric), stock(numeric), unit(string), fractal_allowed(string)|
 |cart|cart_id(string, primary key), user_id(string), product_id(string_, quantity(numeric), unit(string), price(numeric)|
